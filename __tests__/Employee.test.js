@@ -2,8 +2,8 @@ const inquirer = require("inquirer");
 const Employee = require("../lib/Employee");
 
 test("Create employee object", () => {
-  const e = new Employee();
-  expect(typeof e).toBe("object");
+  const employee = new Employee();
+  expect(typeof employee).toBe("object");
 });
 
 test("Set  employee name via constructor arguments", () => {
