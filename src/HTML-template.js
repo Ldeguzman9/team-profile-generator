@@ -1,6 +1,6 @@
 //HTML OUTLINE TEMPLATE
 
-const generatePage = ("") => {
+const generatePage = ("placeholder") => {
   return `
 <!DOCTYPE html>
 <html lang="en">
