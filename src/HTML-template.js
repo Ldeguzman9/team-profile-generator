@@ -7,7 +7,7 @@ const generateTeam = (team) => {
         <div class="card employee-card">
         <div class="card-header">
             <h2 class="card-title">${manager.getName()}</h2>
-            <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${manager.getRole()}</h3>
+           <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${manager.getRole()}</h3>
         </div>
         <div class="card-body">
             <ul class="list-group">
@@ -40,7 +40,7 @@ const generateTeam = (team) => {
   };
 
   // create the html for interns
-  const generateIntern = (internal) => {
+  const generateIntern = (intern) => {
     return `
         <div class="card employee-card">
     <div class="card-header">
@@ -67,13 +67,13 @@ const generateTeam = (team) => {
   );
   html.push(
     team
-      .filter((employee) => employee.getRole() === "Engineer")
+      .filter((engineer) => engineer.getRole() === "Engineer")
       .map((engineer) => generateEngineer(engineer))
       .join("")
   );
   html.push(
     team
-      .filter((employee) => employee.getRole() === "Intern")
+      .filter((intern) => intern.getRole() === "Intern")
       .map((intern) => generateIntern(intern))
       .join("")
   );

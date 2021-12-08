@@ -17,7 +17,7 @@ const promptUser = () => {
       // Questions to build Team Manager Profile
       {
         type: "input",
-        name: "team-name",
+        name: "teamName",
         message:
           "Welcome to team profile generator! Please enter your team name.",
         validate: (teamNameInput) => {
@@ -100,7 +100,7 @@ const promptUser = () => {
           type: "list",
           name: "newMember",
           message: "Would you like to add a new Team member?",
-          choices: ["Engineer", "Intern", "None"],
+          choices: ["Engineer", "Intern", "No"],
         },
       ])
       .then((response) => {
@@ -111,38 +111,153 @@ const promptUser = () => {
           case "Intern":
             internPrompts();
             break;
-          case "None":
+          case "No":
             writeHTML();
         }
       });
   }
+
+  //Function to prompt Engineer questions
   function engineerPrompts() {
-    console.log("Engineer created");
-    addMember();
+    return inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "engineer",
+          message: "Please enter the name of the Engineer",
+          validate: (engineerInput) => {
+            if (engineerInput) {
+              return true;
+            } else {
+              console.log("Please enter the name of the Engineer!");
+              return false;
+            }
+          },
+        },
+
+        {
+          type: "input",
+          name: "engineerId",
+          message: "Please enter the Engineers's employee ID",
+          validate: (engineerIdInput) => {
+            if (engineerIdInput) {
+              return true;
+            } else {
+              console.log("Please enter the Engineers's employee ID!");
+              return false;
+            }
+          },
+        },
+        {
+          type: "input",
+          name: "engineerEmail",
+          message: "Please enter the Engineers's email.",
+          validate: (engineerEmailInput) => {
+            if (engineerEmailInput) {
+              return true;
+            } else {
+              console.log("Please enter a valid email!");
+              return false;
+            }
+          },
+        },
+        {
+          type: "input",
+          name: "engineerGithub",
+          message: "Please enter the Engineers's Git Hub.",
+          validate: (engineerGithubInput) => {
+            if (engineerGithubInput) {
+              return true;
+            } else {
+              console.log("Please enter a valid github!");
+              return false;
+            }
+          },
+        },
+      ])
+      .then((response) => {
+        const engineer = new Engineer(
+          response.engineer,
+          response.engineerId,
+          response.engineerEmail,
+          response.engineerGithub
+        );
+        teamArray.push(engineer);
+        addMember();
+        console.log("Engineer created");
+      });
   }
 
+  //Function to add Intern
   function internPrompts() {
-    console.log("Intern created");
-    addMember();
+    return inquirer
+      .prompt([
+        // Questions to build Intern Profile
+        {
+          type: "input",
+          name: "intern",
+          message: "Please enter the name of the Intern",
+          validate: (internInput) => {
+            if (internInput) {
+              return true;
+            } else {
+              console.log("Please enter the name of the Intern!");
+              return false;
+            }
+          },
+        },
+        {
+          type: "input",
+          name: "internId",
+          message: "Please enter the Intern's employee ID",
+          validate: (internIdInput) => {
+            if (internIdInput) {
+              return true;
+            } else {
+              console.log("Please enter the Intern's employee ID!");
+              return false;
+            }
+          },
+        },
+        {
+          type: "input",
+          name: "internEmail",
+          message: "Please enter the Intern's email.",
+          validate: (internEmailInput) => {
+            if (internEmailInput) {
+              return true;
+            } else {
+              console.log("Please enter a valid email!");
+              return false;
+            }
+          },
+        },
+        {
+          type: "input",
+          name: "internSchool",
+          message: "Please enter the Intern's educational institute.",
+          validate: (internSchoolInput) => {
+            if (internSchoolInput) {
+              return true;
+            } else {
+              console.log("Please enter a valid educational institute!");
+              return false;
+            }
+          },
+        },
+      ])
+      .then((response) => {
+        const intern = new Intern(
+          response.intern,
+          response.internId,
+          response.internEmail,
+          response.internSchool
+        );
+        teamArray.push(intern);
+        addMember();
+        console.log("Intern created");
+      });
   }
-
-  // Questions to add an employee profiles
-
-  // {
-  //   type: "confirm",
-  //   name: "confirmAddEmployee",
-  //   message: "Would you like to add another team member?",
-  //   default: true,
-  // },
-
-  // // questions to add an engineer profile
-
-  // {
-  //   type: "input",
-  //   name: "about",
-  //   message: "What is the name of the Employee",
-  //   when: ({ confirmAddEmployee }) => confirmAddEmployee,
-  // },
 
   function writeHTML() {
     fs.writeFileSync(teamFile, generatePage(teamArray), "utf-8", (err) => {
@@ -152,112 +267,3 @@ const promptUser = () => {
 };
 
 promptUser();
-
-// const promptProject = (portfolioData) => {
-//   console.log(`
-// =================
-// Add a New Project
-// =================
-// `);
-
-//   // If there's no 'projects' array property, create one
-//   if (!teamData.employee) {
-//     teamData.employee = [];
-//   }
-//   return inquirer
-//     .prompt([
-//       {
-//         type: "input",
-//         name: "name",
-//         message: "What is the name of the employee? (Required)",
-//         validate: (nameInput) => {
-//           if (nameInput) {
-//             return true;
-//           } else {
-//             console.log("Please enter a valid name");
-//             return false;
-//           }
-//         },
-//       },
-//       {
-//         type: "input",
-//         name: "employeeId",
-//         message: "Provide an employee ID number.",
-//         validate: (employeeId) => {
-//           if (employeeId) {
-//             return true;
-//           } else {
-//             console.log("You need to enter an employee ID number!");
-//             return false;
-//           }
-//         },
-//       },
-//       {
-//         type: "input",
-//         name: "employeeEmail",
-//         message: "Provide the employee's email.",
-//         validate: (employeeEmail) => {
-//           if (employeeEmail) {
-//             return true;
-//           } else {
-//             console.log("You need to enter a valid email address");
-//             return false;
-//           }
-//         },
-//       },
-//       //   {
-//       //     type: "checkbox",
-//       //     name: "languages",
-//       //     message: "What did you this project with? (Check all that apply)",
-//       //     choices: [
-//       //       "JavaScript",
-//       //       "HTML",
-//       //       "CSS",
-//       //       "ES6",
-//       //       "jQuery",
-//       //       "Bootstrap",
-//       //       "Node",
-//       //     ],
-//       //   },
-//       //   {
-//       //     type: "input",
-//       //     name: "link",
-//       //     message: "Enter the GitHub link to your project. (Required)",
-//       //     validate: (linkInput) => {
-//       //       if (linkInput) {
-//       //         return true;
-//       //       } else {
-//       //         console.log("You need to enter a project GitHub link!");
-//       //         return false;
-//       //       }
-//       //     },
-//       //   },
-//     ])
-//     .then((teamData) => {
-//       teamData.employee.push(profileData);
-//       if (profileData.confirmAddEmployee) {
-//         return promptQuestions(teamData);
-//       } else {
-//         return teamData;
-//       }
-//     });
-// };
-
-// // promptUser()
-// //   .then(promptQuestions)
-// //   .then((profileData) => {
-// //     return generatePage(teamData);
-// //   })
-// //   .then((pageHTML) => {
-// //     return writeFile(pageHTML);
-// //   })
-// //   .then((writeFileResponse) => {
-// //     console.log(writeFileResponse);
-// //     return copyFile();
-// //   })
-// //   .then((copyFileResponse) => {
-// //     console.log(copyFileResponse);
-// //   })
-// //   .catch((err) => {
-// //     console.log(err);
-// //   });
