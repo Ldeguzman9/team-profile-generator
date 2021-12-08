@@ -37,7 +37,7 @@ This application allows users to generate a team catalog. [Name, Position, Emplo
 # README Generator Screen Shots
 
 - **Terminal**
-  ![Terminal Prompts](hhttps://github.com/Ldeguzman9/team-profile-generator/blob/develop/assets/images/terminal-prompts-screenshot.png?raw=true)
+  ![Terminal Prompts](https://github.com/Ldeguzman9/team-profile-generator/blob/develop/assets/images/terminal-prompts-screenshot.png?raw=true)
 
 - **Team Profile**
   ![Team Profile](https://github.com/Ldeguzman9/team-profile-generator/blob/develop/assets/images/team-profile-screenshot.png?raw=true)
