@@ -1,4 +1,6 @@
-##Team Profile Generator
+## Team Profile Generator
+
+This application allows users to generate a team catalog. [Name, Position, Employee ID, Employee Email, and more...]
 
 ## User Story
 
@@ -25,3 +27,25 @@
 - THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
 - WHEN I decide to finish building my team
 - THEN I exit the application, and the HTML is generated-
+
+# README Generator Features:
+
+1. Ability to generate a team profile.
+2. Live links to Engineer Github
+3. Live link to contact by email.
+
+# README Generator Screen Shots
+
+- **Terminal**
+  ![Terminal Prompts](https://github.com/Ldeguzman9/professional-readme-generator/blob/main/assets/images/terminal.png?raw=true)
+
+- **Team Profile**
+  ![Team Profile](https://github.com/Ldeguzman9/professional-readme-generator/blob/main/assets/images/terminal.png?raw=true)
+
+# Technical Skills
+
+- Node.js
+
+# Video Demonstration
+
+- INSERT VIDEO LINK -
