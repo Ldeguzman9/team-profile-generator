@@ -48,4 +48,4 @@ This application allows users to generate a team catalog. [Name, Position, Emplo
 
 # Video Demonstration
 
-- INSERT VIDEO LINK -
+https://watch.screencastify.com/v/GqT2uKaqcn3WUQ8PTqau
